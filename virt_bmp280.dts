@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            virt_i2c_bus: i2c {
+                compatible = "virt,i2c-bus";
+                #address-cells = <1>;
+                #size-cells = <0>;
+                status = "okay";
+
+                bmp280@76 {
+                    compatible = "virt,bmp280";
+                    reg = <0x76>;
+                    status = "okay";
+                };
+            };
+        };
+    };
+};
